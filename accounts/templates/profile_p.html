@@ -1,0 +1,50 @@
+
+
+{% extends "base.html" %}
+
+{% block title %}user_profile_update{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+<div class="container">
+    {% if user_form.errors %}
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <div id="form_errors">
+            {% for key, value in user_form.errors.items %}
+            <strong>{{ value }}</strong>
+            {% endfor %}
+        </div>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endif %}
+    {% load crispy_forms_tags %}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-content">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <br><br>
+                    <button type="submit" class="btn btn-dark btn-lg">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}
+
+

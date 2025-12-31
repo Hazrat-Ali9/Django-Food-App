@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}user_history{% endblock %}
+{% block body %}
+
+
+
+
+
+
+
+ {% for i in my_orders %}
+
+<div class="container mt-5"   style="width: 50%; margin:auto;">
+    <!-- Div with price and date -->
+    <div class="card order-card shadow-sm">
+      <div class="card-body">
+       
+        <h4 class="card-text">Total cost : ${{i.total}}</h4>
+        <h4 class="card-text">Date: {{i.created_at}}</h4>
+        <a href="{% url 'order_detials_form'  i.id %}">  <p class="card-title">Order Details</p></a>
+        
+      </div>
+    </div>
+  </div>
+  
+  {% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}sign_up_page{% endblock %}
+
+
+{% for massage in massages %}
+<div>
+  <p>{{ massage }}</p>
+ 
+  <button onclick="window.location.href='continue_page.html'">Continue</button>
+</div>
+{% endfor %}
+
+
+{% block body %}
+{% load crispy_forms_tags %}
+<div class="card-body" style="width: 50%; margin: auto;">
+  <form method="post" class="needs-validation" novalidate>
+    {% csrf_token %}
+    {{form|crispy}}
+    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+  </form>
+</div>
+
+</br>
+<div class="row">
+  <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+    
+     
+     
+  </div>
+</div>
+
+<p>if you already have a accout then  <a href="{% url 'login' %}"> singin</a>   </p>
+
+
+
+{% load socialaccount %}
+
+<a href="{% provider_login_url 'google' process=process scope=scope auth_params=auth_params %}">
+    Continue with Google
+</a>
+  
+{% endblock %}

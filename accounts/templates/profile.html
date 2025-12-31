@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}user_profile{% endblock %}
+
+{% block body %}
+
+
+<div class="container mt-5">
+    {% if not request.user.profile.is_verified %}<p>your email is not varified click to <a href="{% url 'send_varificatoin_email' %}"> vafiy you email</a> </p>
+    {% else %}<p>your email is not varified </p>
+    {% endif %}
+    <h1 class="text-center">User Profile  </h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">First Name:</label>
+                <div class="col-sm-9">
+                    <h3 class="form-control-plaintext">{{ user.first_name }}</h3>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Last Name:</label>
+                <div class="col-sm-9">
+                    <h3 class="form-control-plaintext">{{ user.last_name }}</h3>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Username:</label>
+                <div class="col-sm-9">
+                    <h3 class="form-control-plaintext">{{ user.username }}</h3>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Email:</label>
+                <div class="col-sm-9">
+                    <h3 class="form-control-plaintext">{{ user.email }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>
+
+<nav class="mt-5">
+    <h4 class="text-center"><a href="{% url 'see_user_ordr_history' %}">History</a></h4>
+    <h4 class="text-center"><a href="{% url 'profileUP' %}">PROFILE EDIT</table></h4>
+    <h4 class="text-center"><a href="{% url 'change_password' %}">Change Password</a></h4>
+</nav>
+
+{% endblock %}
