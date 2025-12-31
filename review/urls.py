@@ -1,6 +1,6 @@
 
 
-
+# urls py
 from django.urls import path
 from .views import give_reviews,edit_my_review,change_review
 
