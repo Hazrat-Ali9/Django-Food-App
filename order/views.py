@@ -4,7 +4,7 @@ from cart.models import Cart_item
 from.forms import OrderForm
 from django.contrib.auth.decorators import login_required
 from accounts.models import Profile
-
+# views
 import uuid
 from django.conf import settings
 from django.core.mail import send_mail
