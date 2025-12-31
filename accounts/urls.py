@@ -1,4 +1,4 @@
-
+# urls
 from django.urls import path,path,include
 from.views import see_user_ordr_history,sign_up,log_in,log_out,user_profile,change_password,profileUP,verify,send_varificatoin_email
 from django.contrib.auth import views as auth_views
