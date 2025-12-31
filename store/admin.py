@@ -1,7 +1,7 @@
 from django.contrib import admin
 from.models import Category,Food
 # Register your models here.
-
+# admin py
 class show_cat(admin.ModelAdmin):
     list_display =['category_name']
     prepopulated_fields = {'slug' : ('category_name',)}
