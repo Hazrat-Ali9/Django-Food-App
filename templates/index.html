@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}home{% endblock %}
+
+{% block filter %}
+            <!-- Category filter dropdown -->
+            <form class="d-flex mx-auto" method="post" action="{% url 'home' %}">
+                {% csrf_token %}
+                <select class="form-select border-2 border-secondary rounded-pill" name="category">
+                    {% for i in catagories %}
+                    <option value="{{i.category_name}}">{{i.category_name}}</option>
+                    {% endfor %}
+                </select>
+                <button class="btn btn-primary border-2 border-secondary rounded-pill" type="submit">Filter</button>
+            </form>
+            {% endblock %}
+
+
+
+
+
+{% block body %}
+
+<div class="container" style="padding-top: 10px;"> <!-- Adjust the value as needed -->
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+
+        {% for product in items %}
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ product.food_img.url }}" class="card-img-top" alt="{{ product.title }}">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'pro_detials' product.id %}">{{ product.food_name }}</a></h5>
+                    <p class="card-text">{{ product.description }}</p>
+                    <p class="card-text">Price: ${{ product.price }}</p>
+                    {% if product.dis_count_availave %}
+                        <p class="card-text">{{ product.parcentage_of_discount }} % discount </p>
+                        <p class="card-text">Discount Price: ${{ product.price_after_discout }}</p>
+                    {% endif %}
+                    <!-- Add a button to rate the food -->
+                    {% if request.user in product.commentors.all %}
+                    <a href="{% url 'edit_my_review' product.id %}" class="btn btn-primary">Edit your review</a>
+                    {% elif request.user in product.buyers.all %}
+                    <a href="{% url 'give_reviews' product.id %}" class="btn btn-primary">Rate this food</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+
+</br>
+
+<nav class="mt-4" aria-label="Page navigation sample" style="width:30%; margin: auto;">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <span>
+                {% if items.has_previous %}
+                <a class="btn btn-primary" href="?page={{ items.previous_page_number }}" role="button">Previous</a>
+                {% endif %}
+                <span class="mx-2" style=" margin: auto;">
+                    Page {{ items.number }} of {{ items.paginator.num_pages }}.
+                </span>
+            </span>
+        </div>
+        <div>
+            {% if items.has_next %}
+            <a class="btn btn-primary" href="?page={{ items.next_page_number }}" role="button">Next</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+{% endblock %}
