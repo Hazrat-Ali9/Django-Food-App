@@ -4,7 +4,7 @@ from.forms import ReviewForm
 from store.models import Food
 from .models import Reviews
 
-
+# views py
 @login_required
 def give_reviews(request, pk=1):
     user = request.user
