@@ -9,7 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import User_profile_update
 from order.models import Order
-
+# views
 
 from.models import Profile
 
