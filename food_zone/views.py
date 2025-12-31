@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from store.models import Food,Category
-
+# views py
 from django.core.paginator import Paginator
 # Create your views here.
 
