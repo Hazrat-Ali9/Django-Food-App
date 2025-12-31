@@ -4,7 +4,7 @@ from review .models import Reviews
 from django.core.paginator import Paginator
 # Create your views here.
 
-
+# views
 # functon for searchr
 
 def search_feature(request):
