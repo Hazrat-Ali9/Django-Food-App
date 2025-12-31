@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}food_detials{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6">
+        <!-- Product Image -->
+        <img src="{{food.food_img.url}}" class="img-fluid" alt="Product Image" style="max-width: 100%; height: auto;">
+      </div>
+      <div class="col-lg-6" style="text-align: center;">
+        <!-- Product Details -->
+        <h2 style="margin-top: 0;">{{food.food_name}}</h2>
+        <p style="margin-bottom: 1rem;">{{food.descriptons}}</p>
+        {% if food.dis_count_availave%}
+        <h3 style="margin-bottom: 1rem;">discount pirce ${{food.price_after_discout}}</h3>
+        {% else %}
+        <h3 style="margin-bottom: 1rem;">${{food.price}}</h3>
+        {% endif %}
+        <!-- Add to Cart Button -->
+        <a href="{% url 'add_to_card' food.id %}">  <button class="btn btn-primary" style="width: 100%;"><i class="fas fa-cart-plus" style="margin-right: 0.5rem;"></i>  Add to Cart </button></a>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <header class="section-heading" >
+    <h3>Customer Reviews </h3>  
+  </header>
+
+
+</br>
+
+{% for i in all_reviews %}
+<div class="container mt-5" style="width: 50%; margin:auto;">
+ 
+  <div class="card order-card shadow-sm">
+    <div class="card-body">
+      <h3 class="card-text">Rating: {{i.rating}} out of 5</h3>
+      <h4 class="card-text">Customer Name: {{i.user.first_name}} {{i.user.last_name}}</h4>
+      <h6 class="card-text">Date: {{i.created_at}}</h6>
+      <h6 class="card-text">Description:</h6>
+      <p class="card-text">{{i.discription}}</p>
+     {% if request.user == i.user%}
+      <a href="{% url 'change_review' i.id %}" class="btn btn-primary">Edit</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+    
+
+
+
+
+{% endblock %}
