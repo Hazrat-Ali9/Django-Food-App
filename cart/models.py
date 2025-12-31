@@ -9,7 +9,7 @@ class Cart_item(models.Model):
      order = models.ForeignKey(Order, on_delete=models.CASCADE, blank=True, null=True, related_name='item')
      quantity=models.IntegerField()
      done = models.BooleanField(default = False)
-
+# model
      def sub_stotal(self):
           if  self.food.dis_count_availave:
                 return self.quantity*self.food.price_after_discout()
