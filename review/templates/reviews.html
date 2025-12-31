@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}review_our_product{% endblock %}
+{% block body %}
+<body>
+  <div class="container mt-5">
+    <div class="card p-4">
+      <h2 class="text-center mb-4">Give a Review</h2>
+      <form  method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label  class="form-label">Rating:</label>
+          {{form.rating}}
+        </div>
+
+        <div class="mb-3">
+          <label  class="form-label">Description:</label>
+          {{form.discription}}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+
+{% endblock%}
