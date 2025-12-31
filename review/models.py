@@ -2,7 +2,7 @@ from django.db import models
 from store.models import Food
 from django.contrib.auth.models import User
 
-
+# models
 # Create your models here.
 
 
