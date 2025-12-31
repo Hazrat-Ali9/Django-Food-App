@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from store.models import Food
 from cart.models import Cart_item
 from django.contrib.auth.models import User
-
+# views py
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
