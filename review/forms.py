@@ -1,6 +1,6 @@
 from django import forms
 from .models import Reviews
-
+# forms
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Reviews
