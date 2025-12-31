@@ -1,4 +1,4 @@
-
+# urls py
 from django.urls import path,path,include
 from.views import add_to_card,show_my_cart,decrease_item,delete_item
 urlpatterns = [
