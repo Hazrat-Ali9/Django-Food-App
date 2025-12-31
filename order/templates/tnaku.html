@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Complete</title>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  .thank-you {
+    text-align: center;
+    padding: 50px;
+    font-size: 24px;
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .btn-go-home {
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 thank-you">
+      <p>Thank you, your order is complete!</p>
+      <a href="{% url 'see_user_ordr_history' %}" class="btn btn-success btn-go-home">See my history</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

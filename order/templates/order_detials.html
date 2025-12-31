@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+
+
+
+
+
+
+  <div class="bg-light rounded"   style="width: 70%; margin:auto; height: 50%;">
+    <div class="p-4">
+        
+        <div class="d-flex justify-content-between mb-4">
+            <h5 class="mb-0 me-4">Date:</h5>
+            <p class="mb-0">${{current_order.created_at}}</p>
+        </div>
+        <div class="d-flex justify-content-between mb-4">
+            <h5 class="mb-0 me-4">Subtotal:</h5>
+            <p class="mb-0">${{current_order.product_price}}</p>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <h5 class="mb-0 me-4">Delivery cost</h5>
+            <div class="">
+                <p class="mb-0"> ${{current_order.delevary_cost}}</p>
+            </div>
+        </div>
+       
+    </div>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">Total</h5>
+        <p class="mb-0 pe-4">${{current_order.total}}</p>
+    </div>
+
+   
+  
+    <h4 class="card-title mb-4">Billing Address</h4>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">First Name</h5>
+        <p class="mb-0 pe-4">{{current_order.first_name}}</p>
+    </div>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">Last Name</h5>
+        <p class="mb-0 pe-4">{{current_order.last_name}}</p>
+    </div>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">Email</h5>
+        <p class="mb-0 pe-4">{{current_order.email}}</p>
+    </div>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">Phone Number</h5>
+        <p class="mb-0 pe-4">{{current_order.phone}}</p>
+    </div>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">Address Line</h5>
+        <p class="mb-0 pe-4">{{current_order.address_line1}}</p>
+    </div>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">City</h5>
+        <p class="mb-0 pe-4">{{current_order.city}}</p>
+    </div>
+
+    <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+        <h5 class="mb-0 ps-4 me-4">State</h5>
+        <p class="mb-0 pe-4">{{current_order.state}}</p>
+    </div>
+
+</div>
+
+
+</br>
+
+<h3  > THE  FOODS   YOU BOUTHT IN THIS ORDER  </h3>
+
+</br>
+
+<div class="container" >
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+
+        {% for i in all_items %}
+
+
+        <div class="col">
+            <div class="card h-100">
+                <img src="{{ i.food.food_img.url }}" class="card-img-top" alt="{{ product.title }}">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'pro_detials' i.food.id %}">{{ i.food.food_name }}</a></h5>
+                </div>
+                <h4>quantity : {{ i.quantity }}</h4>
+                {% if request.user in i.food.commentors.all %}
+                    <a href="{% url 'edit_my_review' i.food.id %}" class="btn btn-primary">Edit your review</a>
+                    {% else %}
+                    <a href="{% url 'give_reviews' i.food.id %}" class="btn btn-primary">Rate this food</a>
+                {% endif %}
+            </div>
+        </div>
+
+
+
+        {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

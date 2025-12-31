@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+
+
+   
+    
+        <div class="bg-light rounded"   style="width: 70%; margin:auto;">
+            <div class="p-4">
+                
+                <div class="d-flex justify-content-between mb-4">
+                    <h5 class="mb-0 me-4">Subtotal:</h5>
+                    <p class="mb-0">${{sub_total}}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <h5 class="mb-0 me-4">Delivery cost</h5>
+                    <div class="">
+                        <p class="mb-0"> ${{delivery_cost}}</p>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+                <h5 class="mb-0 ps-4 me-4">Total</h5>
+                <p class="mb-0 pe-4">${{total}}</p>
+            </div>
+          
+        </div>
+   
+
+
+
+<article class="card mb-4"  style="width: 70%; margin:auto;">
+  <div class="card">
+      <div class="card-body">
+          <h4 class="card-title mb-4">Billing Address</h4>
+
+
+          <form action="" method="POST">
+              {% csrf_token %}
+              <div class="form-row">
+                  <div class="col form-group">
+                      <label for="">First Name</label>
+                     {{form.first_name}}
+                  </div>
+                  <div class="col form-group">
+                      <label for="">Last Name</label>
+                      {{form.last_name}}
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col form-group">
+                      <label for="">Email</label>
+                      {{form.email}}
+                  </div>
+                  <div class="col form-group">
+                      <label for="">Phone Number</label>
+                      {{form.phone}}
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col form-group">
+                      <label for="">Address Line </label>
+                      {{form.address_line1}}
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col form-group">
+                      <label for="">City</label>
+                      {{form.city}}
+                  </div>
+                  <div class="col form-group">
+                      <label for="">State</label>
+                      {{form.state}}
+                  </div>
+                  
+              </div>
+              <!-- Submit Button -->
+            </br>
+              <button type="submit" name="confirm_order" class="btn btn-primary">Confirm Order</button>
+         
+         
+         
+            </form>
+      </div>
+  </div>
+</article> <!-- card.// -->
+
+
+
+
+{% endblock %}
